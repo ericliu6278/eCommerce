@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <style>
+                img {
+                    width:28%;
+                    }
+                input{
+                    width:28%;
+					border-style:solid;
+                    }
+                div{
+                    background-color: lightblue;
+                    width:28%;
+					border-style:dotted;
+					float:left;
+                    }
+				h1{
+					font-family:italic;
+					word-spacing: 10px;
+					text-indent: 200px;
+					color:lightblue;
+					padding:20px;
+					text-align: center;
+					border-style:dotted;
+					border-color: red green blue yellow;
+					}
+				span{
+					color: black;
+					}
+				p{
+					color:black;
+					}
+				body{
+					background-image: url("https://avante.biz/wp-content/uploads/Background-Images-For-Websites/Background-Images-For-Websites-011.jpg");
+					}
+
+            </style>
+            
+            <script>
+			        pr1 = 15;
+                    pr2 = 15;
+                    pr3 = 15;
+					
+                function initPrices(){
+                    document.getElementById("span1") = "Price: $" +pr1;
+                    document.getElementById("span2") = "Price: $" +pr2;
+                    document.getElementById("span3") = "Price: $" +pr3;
+                }
+
+                function ProcessOrder(){
+                    var totof1=parseFloat(document.getElementById("qty1").value);
+                    var totof2=parseFloat(document.getElementById("qty2").value);
+                    var totof3=parseFloat(document.getElementById("qty3").value);
+                    var totqty1=15*totof1;
+                    var totqty2=15*totof2;
+                    var totqty3=15*totof3;
+                    var totqty=totof1+totof2+totof3;
+                    var subtotal= totqty1+totqty2+totqty3;
+                    var tax=subtotal*.0875;
+                    var S_H= "";
+                    var CT=subtotal+tax+S_H;
+                    var p_l= subtotal-CT;
+                    var op=document.getElementById("output");
+                    if(subtotal >= 100){
+                        S_H= 25;
+                        op.innerHTML="Subtotal: " +subtotal+ "<br>Tax: " +tax+ "<br>Shipping and Handling: " +S_H+ "<br>Customer Total: " +CT+ "<br>Total Items Sold: " +totqty+ "<br>Customer Subtotal: "+subtotal+"<br>Company Subtotal: "+subtotal+"<br> Profit/Loss: "+p_l;
+                    }else if(subtotal <100 && subtotal >200){
+                        S_H=10;
+                        op.innerHTML="Subtotal: " +subtotal+ "<br>Tax: " +tax+ "<br>Shipping and Handling: " +S_H+ "<br>Customer Total: " +CT+ "<br>Total Items Sold: " +totqty+ "<br>Customer Subtotal: "+subtotal+"<br>Company Subtotal: "+subtotal+"<br> Profit/Loss: "+p_l ;
+                    }else{
+                        S_H=0;
+                        op.innerHTML="Subtotal: " +subtotal+ "<br>Tax: " +tax+ "<br>Shipping and Handling: " +S_H+ "<br>Customer Total: " +CT+ "<br>Total Items Sold: " +totqty+ "<br>Customer Subtotal: "+subtotal+"<br>Company Subtotal: "+subtotal+"<br> Profit/Loss: "+p_l ;
+                    }
+                
+                }
+
+                
+            </script>
+        </head>
+        <body>
+            <h1> Welcome to Eric's store! </h1>
+            <div>
+                <img src="https://image.spreadshirtmedia.com/image-server/v1/products/1017608124/views/2,width=800,height=800,appearanceId=1,version=1492285039/historically-black-colleges-hbcus-listed-on-back-red-and-white-shirt-mens-t-shirt.jpg"><br>
+                <p>Basic white shirt</p><br>
+                <span> Price of 1 white shirt is $15 </span>
+                <input type="text" id="qty1" value="0"placeholder="Enter Quantity">
+            </div>
+            <div>
+                <img src="http://design.bi/wp-content/uploads/2014/03/Blank-black-T-shirt.jpg"> <br>
+                <p>Basic black shirt</p><br>
+                <span> Price of 1 black shirt is $15</span>
+                <input type="text" id="qty2" value="0" placeholder="Enter Quantity">
+            </div>
+            <div>
+                <img src="https://ae01.alicdn.com/kf/HTB10qigJFXXXXcTXVXXq6xXFXXXj/autumn-and-winter-leather-motorcycle-leather-jacket-men-s-leather-jacket-coat-new-men-s-business.jpg"><br>
+                <p>Jacket</p><br>
+                <span> Price of 1 jacket is $15 </span>
+                <input type="text" id="qty3" value="0" placeholder="Enter Quantity">
+            </div>
+            <button onclick="ProcessOrder()"> Process Order </button>
+            <br>
+            <div id="output"></div>
+        </body>
+    </html>
